@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Container, LogoImage, Form } from "./styles";
 // alert for user experience in responses
 import { Alert } from "react-native";
@@ -15,6 +15,9 @@ export default function SignIn({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // refference to password
+  const passwordRef = useRef();
 
   // function to submit login
   async function handleLogin() {
@@ -45,17 +48,20 @@ export default function SignIn({ navigation }) {
       <LogoImage source={require("../../../assets/LogoNave.png")} />
       <Form>
         <Input
+          onSubmitEditing={() => passwordRef.current.focus()}
           value={email}
           onChangeText={setEmail}
           label="E-mail"
           placeholder="E-mail"
         />
         <Input
+          ref={passwordRef}
           value={password}
           onChangeText={setPassword}
           label="Senha"
           secureTextEntry
           placeholder="Senha"
+          onSubmitEditing={handleLogin}
         />
         <Button loading={loading} onPress={handleLogin}>
           Entrar

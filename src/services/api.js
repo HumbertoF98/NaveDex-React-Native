@@ -1,6 +1,5 @@
 import axios from "axios";
-import { getToken } from "./auth";
-
+import AsyncStorage from "@react-native-community/async-storage";
 // baseURL API
 const api = axios.create({
   baseURL: "https://navedex-api.herokuapp.com/v1",
@@ -13,7 +12,7 @@ Here the Axios interceptors were used,
    and if it exists, it adds the Authorization Header to the request.
  */
 api.interceptors.request.use(async (config) => {
-  const token = getToken();
+  const token = await AsyncStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

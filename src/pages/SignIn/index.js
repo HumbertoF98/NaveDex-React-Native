@@ -6,8 +6,6 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 // storage data of cellphone
 import AsyncStorage from "@react-native-community/async-storage";
-// intercepts request for login
-import { login } from "../../services/auth";
 //api
 import api from "../../services/api";
 
@@ -33,12 +31,13 @@ export default function SignIn({ navigation }) {
         });
         if (response.data.token) {
           setLoading(false);
-          login(response.data.token);
+          AsyncStorage.setItem("token", response.data.token);
           navigation.navigate("Drawer");
         }
       } catch (err) {
         Alert.alert("Error", err.response.data.message);
         setLoading(false);
+        AsyncStorage.clear();
       }
     }
   }

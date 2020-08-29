@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Alert, Text } from "react-native";
 import {
   Container,
@@ -24,6 +24,13 @@ export default function AddNaver({ navigation }) {
   const [urlPhoto, setUrlPhoto] = useState("");
   const [adimissionDate, setAdimissionDate] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // refferences
+  const ageRef = useRef();
+  const jobRef = useRef();
+  const projectRef = useRef();
+  const urlPhotoRef = useRef();
+  const admissionDateRef = useRef();
 
   // function to add a naver
   async function addNaver() {
@@ -97,40 +104,51 @@ export default function AddNaver({ navigation }) {
         <FormInput
           value={name}
           onChangeText={setName}
+          onSubmitEditing={() => jobRef.current.focus()}
           label="Nome"
           placeholder="Nome"
         />
         <FormInput
+          ref={jobRef}
           value={job}
           onChangeText={setJob}
           label="Cargo"
           placeholder="Cargo"
+          onSubmitEditing={() => ageRef.current.focus()}
         />
         <FormInput
+          ref={ageRef}
           value={age}
           onChangeText={handleDateAge}
           maxLength={10}
           label="Data de nascimento"
           placeholder="Data de nascimento"
+          onSubmitEditing={() => admissionDateRef.current.focus()}
         />
         <FormInput
+          ref={admissionDateRef}
           value={adimissionDate}
           onChangeText={handleDataAdmission}
           maxLength={10}
           label="Dia de admissão"
           placeholder="Dia de admissão"
+          onSubmitEditing={() => projectRef.current.focus()}
         />
         <FormInput
+          ref={projectRef}
           value={project}
           onChangeText={setProject}
           label="Projetos que participou"
           placeholder="Projetos que participou"
+          onSubmitEditing={() => urlPhotoRef.current.focus()}
         />
         <FormInput
+          ref={urlPhotoRef}
           value={urlPhoto}
           onChangeText={setUrlPhoto}
           label="URL da foto do naver"
           placeholder="URL da foto do naver"
+          onSubmitEditing={addNaver}
         />
         <SubmitButton loading={loading} onPress={addNaver}>
           Salvar

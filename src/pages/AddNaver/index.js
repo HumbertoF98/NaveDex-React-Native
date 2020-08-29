@@ -59,6 +59,27 @@ export default function AddNaver({ navigation }) {
     }
   }
 
+  // mask for date
+  const maskDate = (value) => {
+    const v = value.replace(/\D/g, "").slice(0, 10);
+    if (v.length >= 5) {
+      return `${v.slice(0, 2)}/${v.slice(2, 4)}/${v.slice(4)}`;
+    } else if (v.length >= 3) {
+      return `${v.slice(0, 2)}/${v.slice(2)}`;
+    }
+    return v;
+  };
+
+  //function to mask date of birth
+  function handleDateAge(age) {
+    setAge(maskDate(age));
+  }
+
+  //function to mask date of admission
+  function handleDataAdmission(date) {
+    setAdimissionDate(maskDate(date));
+  }
+
   return (
     <Container>
       {isModalVisible ? (
@@ -87,13 +108,15 @@ export default function AddNaver({ navigation }) {
         />
         <FormInput
           value={age}
-          onChangeText={setAge}
+          onChangeText={handleDateAge}
+          maxLength={10}
           label="Data de nascimento"
           placeholder="Data de nascimento"
         />
         <FormInput
           value={adimissionDate}
-          onChangeText={setAdimissionDate}
+          onChangeText={handleDataAdmission}
+          maxLength={10}
           label="Dia de admissão"
           placeholder="Dia de admissão"
         />

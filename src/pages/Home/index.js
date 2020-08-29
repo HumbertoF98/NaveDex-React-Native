@@ -52,6 +52,11 @@ export default function Home({ navigation }) {
     navigation.navigate("ViewNaver", { naver });
   }
 
+  // this function navigates to the next route by sending a parameter
+  function navigateToEditNaver(naver) {
+    navigation.navigate("AddNaver", { naver });
+  }
+
   return (
     <ViewNavers
       ListHeaderComponent={
@@ -88,8 +93,12 @@ export default function Home({ navigation }) {
               : nav.job_role}
           </TextJobNaver>
           <ViewTrashAndPencil>
-            <ImageTrashAndPencil source={Trash} />
-            <ImageTrashAndPencil source={Pencil} />
+            <TouchImage>
+              <ImageTrashAndPencil source={Trash} />
+            </TouchImage>
+            <TouchImage onPress={() => navigateToEditNaver(nav)}>
+              <ImageTrashAndPencil source={Pencil} />
+            </TouchImage>
           </ViewTrashAndPencil>
         </ViewOneNaver>
       )}

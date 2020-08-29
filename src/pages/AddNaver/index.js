@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Alert, Text } from "react-native";
+import { Alert } from "react-native";
 import {
   Container,
   IconGoBack,
@@ -9,6 +9,7 @@ import {
   FormInput,
   SubmitButton,
 } from "./styles";
+import { useRoute } from "@react-navigation/native";
 import Header from "../../components/Header";
 import GoBack from "../../../assets/GoBack.png";
 import Modal from "../../components/Modal";
@@ -16,13 +17,36 @@ import Modal from "../../components/Modal";
 import api from "../../services/api";
 
 export default function AddNaver({ navigation }) {
+  const route = useRoute();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [job, setJob] = useState("");
-  const [project, setProject] = useState("");
-  const [urlPhoto, setUrlPhoto] = useState("");
-  const [adimissionDate, setAdimissionDate] = useState("");
+
+  const AddEditNaver = route.params ? "Editar Naver" : "Adicionar Naver";
+  const [name, setName] = useState(route.params ? route.params.naver.name : "");
+  const [age, setAge] = useState(
+    route.params
+      ? route.params.naver.birthdate.slice(0, 10).split("-").reverse().join("/")
+      : ""
+  );
+  const [job, setJob] = useState(
+    route.params ? route.params.naver.job_role : ""
+  );
+  const [project, setProject] = useState(
+    route.params ? route.params.naver.project : ""
+  );
+  const [urlPhoto, setUrlPhoto] = useState(
+    route.params ? route.params.naver.url : ""
+  );
+  const [adimissionDate, setAdimissionDate] = useState(
+    route.params
+      ? route.params.naver.admission_date
+          .slice(0, 10)
+          .split("-")
+          .reverse()
+          .join("/")
+      : ""
+  );
+  const [id, setId] = useState(route.params ? route.params.naver.id : "");
   const [loading, setLoading] = useState(false);
 
   // refferences
@@ -87,11 +111,39 @@ export default function AddNaver({ navigation }) {
     setAdimissionDate(maskDate(date));
   }
 
+  // function to update a naver
+  async function updateNaver() {
+    console.log(id);
+    setLoading(true);
+    try {
+      await api
+        .put(`navers/${id}`, {
+          name,
+          job_role: job,
+          birthdate: age,
+          admission_date: adimissionDate,
+          project,
+          url: urlPhoto,
+        })
+        .then(function (response) {
+          if (response.status === 200) {
+            setIsModalVisible(true);
+            setLoading(false);
+          }
+        });
+    } catch (err) {
+      Alert.alert("Erro", "Desculpe, ocorreu um erro!");
+      setLoading(false);
+    }
+  }
+
   return (
     <Container>
       {isModalVisible ? (
         <Modal onClose={() => setIsModalVisible(false)}>
-          Naver criado com sucesso
+          {route.params
+            ? "Naver editado com sucesso"
+            : "Naver adicionado com sucesso"}
         </Modal>
       ) : null}
       <Header>
@@ -99,7 +151,7 @@ export default function AddNaver({ navigation }) {
           <IconGoBack source={GoBack} />
         </TouchImage>
       </Header>
-      <TextAddNaver>Adicionar naver</TextAddNaver>
+      <TextAddNaver>{AddEditNaver}</TextAddNaver>
       <Form>
         <FormInput
           value={name}
@@ -150,9 +202,15 @@ export default function AddNaver({ navigation }) {
           placeholder="URL da foto do naver"
           onSubmitEditing={addNaver}
         />
-        <SubmitButton loading={loading} onPress={addNaver}>
-          Salvar
-        </SubmitButton>
+        {route.params ? (
+          <SubmitButton loading={loading} onPress={updateNaver}>
+            Salvar
+          </SubmitButton>
+        ) : (
+          <SubmitButton loading={loading} onPress={addNaver}>
+            Salvar
+          </SubmitButton>
+        )}
       </Form>
     </Container>
   );

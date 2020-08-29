@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  width: 85%;
+  width: 90%;
   height: 40px;
   align-self: center;
   align-items: center;
@@ -24,4 +24,5 @@ export const TextLabel = styled.Text`
   text-align: left;
   align-self: flex-start;
   color: #212121;
+  font-weight: bold;
 `;

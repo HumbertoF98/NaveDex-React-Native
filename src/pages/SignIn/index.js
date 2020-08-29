@@ -3,14 +3,14 @@ import { Container, LogoImage, Form } from "./styles";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   return (
     <Container>
       <LogoImage source={require("../../../assets/LogoNave.png")} />
       <Form>
         <Input label="E-mail" placeholder="E-mail" />
         <Input label="Senha" placeholder="Senha" />
-        <Button>Entrar</Button>
+        <Button onPress={() => navigation.navigate("Home")}>Entrar</Button>
       </Form>
     </Container>
   );

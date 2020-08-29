@@ -14,3 +14,12 @@ export const Text = styled.Text`
   font-size: 14px;
   line-height: 24px;
 `;
+
+export const Image = styled.Image`
+  margin-right: 15px;
+  margin-top: 2px;
+`;
+
+export const ContainerIcon = styled.View`
+  flex-direction: row;
+`;

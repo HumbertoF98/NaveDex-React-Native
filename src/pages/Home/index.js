@@ -7,6 +7,7 @@ import {
   ViewNavers,
   ViewOneNaver,
   ImageNaver,
+  TouchImage,
   TextNameNaver,
   TextJobNaver,
   ViewTrashAndPencil,
@@ -29,7 +30,9 @@ export default function Home({ navigation }) {
       </SubHeader>
       <ViewNavers>
         <ViewOneNaver>
-          <ImageNaver source={imageNaver} />
+          <TouchImage onPress={() => navigation.navigate("ViewNaver")}>
+            <ImageNaver source={imageNaver} />
+          </TouchImage>
           <TextNameNaver>Juliano Reis</TextNameNaver>
           <TextJobNaver>Front-end Developer</TextJobNaver>
           <ViewTrashAndPencil>

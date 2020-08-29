@@ -16,7 +16,7 @@ export function DrawerContainer(props) {
         activeTintColor={"#212121"}
         inactiveTintColor={"#212121"}
         activeBackgroundColor={"#FFF"}
-        labelStyle={{ fontSize: 22, lineHeight: 32 }}
+        labelStyle={{ fontSize: 22, lineHeight: 32, fontWeight: "bold" }}
         label="Sair"
         onPress={handleLogout}
       />

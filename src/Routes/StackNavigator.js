@@ -2,6 +2,7 @@ import React from "react";
 // pages
 import SignIn from "../pages/SignIn";
 import AddNaver from "../pages/AddNaver";
+import ViewNaver from "../pages/ViewNaver";
 // component drawer navigator
 import { Drawer } from "./DrawerNavigator";
 import { TouchableOpacity, Image } from "react-native";
@@ -23,7 +24,7 @@ export function StackNavigator({ navigation }) {
             transparent
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
           >
-            <Image source={require("../../assets/Vector.png")} />
+            <Image source={require("../../assets/Drawer.png")} />
           </TouchableOpacity>
         ),
       })}
@@ -38,6 +39,11 @@ export function StackNavigator({ navigation }) {
         options={{ headerShown: false }}
         name="AddNaver"
         component={AddNaver}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="ViewNaver"
+        component={ViewNaver}
       />
     </Stack.Navigator>
   );

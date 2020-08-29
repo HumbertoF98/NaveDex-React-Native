@@ -31,7 +31,12 @@ export const ViewOneNaver = styled.View`
   margin-left: 20px;
 `;
 
-export const ImageNaver = styled.Image``;
+export const ImageNaver = styled.Image`
+  width: 156.56px;
+  height: 170px;
+`;
+
+export const TouchImage = styled.TouchableOpacity``;
 
 export const TextNameNaver = styled.Text`
   font-size: 14px;

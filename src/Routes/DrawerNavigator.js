@@ -15,7 +15,7 @@ export function Drawer({ navigation }) {
         activeTintColor: "#212121",
         inactiveBackgroundColor: "#212121",
         activeBackgroundColor: "#FFF",
-        labelStyle: { fontSize: 22, lineHeight: 32 },
+        labelStyle: { fontSize: 22, lineHeight: 32, fontWeight: "bold" },
       }}
       drawerContent={(props) => <DrawerContainer {...props} />}
     >

@@ -1,25 +1,24 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import { Container, Text } from "./styles";
-import PropTypes from "prop-types";
+import {
+  Container,
+  ContainerButton,
+  Text,
+  ContainerIcon,
+  Image,
+} from "./styles";
 
-export default function Button({ children, loading, ...rest }) {
+export default function Button({ children, loading, image, ...rest }) {
   return (
     <Container {...rest}>
       {loading ? (
         <ActivityIndicator size="small" color="#FFF" />
       ) : (
-        <Text>{children}</Text>
+        <ContainerIcon>
+          {image && <Image source={image} />}
+          {children && <Text>{children}</Text>}
+        </ContainerIcon>
       )}
     </Container>
   );
 }
-
-Button.propTypes = {
-  children: PropTypes.string.isRequired,
-  loading: PropTypes.bool,
-};
-
-Button.defaultProps = {
-  loading: false,
-};

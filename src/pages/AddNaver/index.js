@@ -3,6 +3,7 @@ import {
   Container,
   IconGoBack,
   TouchImage,
+  TextAddNaver,
   Form,
   FormInput,
   SubmitButton,
@@ -18,6 +19,7 @@ export default function AddNaver({ navigation }) {
           <IconGoBack source={GoBack} />
         </TouchImage>
       </Header>
+      <TextAddNaver>Adicionar naver</TextAddNaver>
       <Form>
         <FormInput label="Nome" placeholder="Nome" />
         <FormInput label="Cargo" placeholder="Cargo" />

@@ -16,8 +16,8 @@ const ModalContainer = ({ onClose = () => {}, children }) => {
         <TouchImage onPress={() => onClose()}>
           <ImageGoBack source={CloseButton} />
         </TouchImage>
-        <Text>Naver adicionado</Text>
-        <TextInfo>Naver adicionado com sucesso</TextInfo>
+        <Text>{children}</Text>
+        <TextInfo>{children}</TextInfo>
       </Content>
     </Container>
   );

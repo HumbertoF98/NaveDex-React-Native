@@ -1,11 +1,12 @@
 import React from "react";
 import { Container } from "./styles";
 import { DrawerItemList, DrawerItem } from "@react-navigation/drawer";
+import AsyncStorage from "@react-native-community/async-storage";
 
 // This component will render the DrawerNavigator
 export function DrawerContainer(props) {
   async function handleLogout() {
-    /* await AsyncStorage.clear(); */
+    await AsyncStorage.clear();
     props.navigation.navigate("SignIn");
   }
 

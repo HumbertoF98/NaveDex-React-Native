@@ -4,7 +4,7 @@
     "slug": "NaveDex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/splash.png",
+    "icon": "./assets/IconApp.png",
     "splash": {
       "backgroundColor": "#ffffff",
       "image": "./assets/Splashh.png",

@@ -1,5 +1,8 @@
 import React from "react";
+// pages
 import SignIn from "../pages/SignIn";
+import AddNaver from "../pages/AddNaver";
+// component drawer navigator
 import { Drawer } from "./DrawerNavigator";
 import { TouchableOpacity, Image } from "react-native";
 import { DrawerActions } from "@react-navigation/native";
@@ -30,6 +33,11 @@ export function StackNavigator({ navigation }) {
         options={{ headerShown: false }}
         name="SignIn"
         component={SignIn}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="AddNaver"
+        component={AddNaver}
       />
     </Stack.Navigator>
   );

@@ -17,13 +17,15 @@ import imageNaver from "../../../assets/Juliano.png";
 import Trash from "../../../assets/Trash.png";
 import Pencil from "../../../assets/Pencil.png";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <Container>
       <Header />
       <SubHeader>
         <TextNaver>Navers</TextNaver>
-        <AddNaverButton>Adicionar naver</AddNaverButton>
+        <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
+          Adicionar naver
+        </AddNaverButton>
       </SubHeader>
       <ViewNavers>
         <ViewOneNaver>

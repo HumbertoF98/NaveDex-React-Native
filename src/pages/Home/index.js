@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   SubHeader,
@@ -17,10 +17,21 @@ import Header from "../../components/Header";
 import imageNaver from "../../../assets/Juliano.png";
 import Trash from "../../../assets/Trash.png";
 import Pencil from "../../../assets/Pencil.png";
+import Modal from "../../components/Modal";
+import ModalDelete from "../../components/ModalDeleteNaver";
 
 export default function Home({ navigation }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalDelete, setIsModalDelete] = useState(false);
+
   return (
     <Container>
+      {isModalVisible ? (
+        <Modal onClose={() => setIsModalVisible(false)} />
+      ) : null}
+      {isModalDelete ? (
+        <ModalDelete onClose={() => setIsModalDelete(false)} />
+      ) : null}
       <Header />
       <SubHeader>
         <TextNaver>Navers</TextNaver>
@@ -41,7 +52,9 @@ export default function Home({ navigation }) {
           </ViewTrashAndPencil>
         </ViewOneNaver>
         <ViewOneNaver>
-          <ImageNaver source={imageNaver} />
+          <TouchImage onPress={() => setIsModalVisible(true)}>
+            <ImageNaver source={imageNaver} />
+          </TouchImage>
           <TextNameNaver>Juliano Reis</TextNameNaver>
           <TextJobNaver>Front-end Developer</TextJobNaver>
           <ViewTrashAndPencil>
@@ -53,7 +66,9 @@ export default function Home({ navigation }) {
 
       <ViewNavers>
         <ViewOneNaver>
-          <ImageNaver source={imageNaver} />
+          <TouchImage onPress={() => setIsModalDelete(true)}>
+            <ImageNaver source={imageNaver} />
+          </TouchImage>
           <TextNameNaver>Juliano Reis</TextNameNaver>
           <TextJobNaver>Front-end Developer</TextJobNaver>
           <ViewTrashAndPencil>

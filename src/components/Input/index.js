@@ -10,14 +10,4 @@ function Input({ style, label, ...rest }, ref) {
   );
 }
 
-/* Input.propTypes = {
-  icon: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-};
-
-Input.defaultProps = {
-  icon: null,
-  style: {},
-}; */
-
 export default forwardRef(Input);

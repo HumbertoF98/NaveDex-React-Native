@@ -10,7 +10,7 @@ export default function SignIn({ navigation }) {
       <Form>
         <Input label="E-mail" placeholder="E-mail" />
         <Input label="Senha" placeholder="Senha" />
-        <Button onPress={() => navigation.navigate("Home")}>Entrar</Button>
+        <Button onPress={() => navigation.navigate("Drawer")}>Entrar</Button>
       </Form>
     </Container>
   );

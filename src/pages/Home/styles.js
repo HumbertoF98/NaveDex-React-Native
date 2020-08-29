@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import Button from "../../components/Button";
 
-export const Container = styled.ScrollView``;
+export const Container = styled.View``;
 
 export const SubHeader = styled.View`
   margin: 20px;
@@ -21,14 +21,14 @@ export const AddNaverButton = styled(Button)`
   width: 155px;
 `;
 
-export const ViewNavers = styled.View`
-  flex-direction: row;
-  margin-top: 30px;
+export const ViewNavers = styled.FlatList`
+  margin-bottom: 20px;
 `;
 
 export const ViewOneNaver = styled.View`
   width: 45%;
   margin-left: 20px;
+  margin-top: 30px;
 `;
 
 export const ImageNaver = styled.Image`

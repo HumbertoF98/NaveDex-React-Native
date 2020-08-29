@@ -12,7 +12,7 @@ export const TouchImage = styled.TouchableOpacity`
 export const IconGoBack = styled.Image``;
 
 export const ImageNaver = styled.Image`
-  width: 100%;
+  height: 380px;
 `;
 
 export const TextNameNaver = styled.Text`

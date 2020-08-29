@@ -18,10 +18,8 @@ import Header from "../../components/Header";
 import { useIsFocused } from "@react-navigation/native";
 //api
 import api from "../../services/api";
-import imageNaver from "../../../assets/Juliano.png";
 import Trash from "../../../assets/Trash.png";
 import Pencil from "../../../assets/Pencil.png";
-import Modal from "../../components/Modal";
 import ModalDelete from "../../components/ModalDeleteNaver";
 
 export default function Home({ navigation }) {
@@ -49,36 +47,52 @@ export default function Home({ navigation }) {
     }
   }, [isFocused]);
 
+  // this function navigates to the next route by sending a parameter
+  function navigateToNaverInfo(naver) {
+    navigation.navigate("ViewNaver", { naver });
+  }
+
   return (
-    <Container>
-      {isModalVisible ? (
-        <Modal onClose={() => setIsModalVisible(false)} />
-      ) : null}
-      {isModalDelete ? (
-        <ModalDelete onClose={() => setIsModalDelete(false)} />
-      ) : null}
-      <Header />
-      <SubHeader>
-        <TextNaver>Navers</TextNaver>
-        <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
-          Adicionar naver
-        </AddNaverButton>
-      </SubHeader>
-      <ViewNavers>
-        {navers.map((nav) => (
-          <ViewOneNaver key={nav.id}>
-            <TouchImage onPress={() => navigation.navigate("ViewNaver")}>
-              <ImageNaver source={imageNaver} />
-            </TouchImage>
-            <TextNameNaver>Juliano Reis</TextNameNaver>
-            <TextJobNaver>Front-end Developer</TextJobNaver>
-            <ViewTrashAndPencil>
-              <ImageTrashAndPencil source={Trash} />
-              <ImageTrashAndPencil source={Pencil} />
-            </ViewTrashAndPencil>
-          </ViewOneNaver>
-        ))}
-      </ViewNavers>
-    </Container>
+    <ViewNavers
+      ListHeaderComponent={
+        <Container>
+          {isModalDelete ? (
+            <ModalDelete onClose={() => setIsModalDelete(false)} />
+          ) : null}
+          <Header />
+          <SubHeader>
+            <TextNaver>Navers</TextNaver>
+            <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
+              Adicionar naver
+            </AddNaverButton>
+          </SubHeader>
+        </Container>
+      }
+      data={navers}
+      keyExtractor={(nav) => String(nav.id)}
+      numColumns={3}
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item: nav }) => (
+        <ViewOneNaver>
+          <TouchImage onPress={() => navigateToNaverInfo(nav)}>
+            <ImageNaver source={{ uri: nav.url }} />
+          </TouchImage>
+          <TextNameNaver>
+            {nav.name.length > 20
+              ? nav.name.substring(0, 20, -3) + "..."
+              : nav.name}
+          </TextNameNaver>
+          <TextJobNaver>
+            {nav.job_role.length > 20
+              ? nav.job_role.substring(0, 20, -3) + "..."
+              : nav.job_role}
+          </TextJobNaver>
+          <ViewTrashAndPencil>
+            <ImageTrashAndPencil source={Trash} />
+            <ImageTrashAndPencil source={Pencil} />
+          </ViewTrashAndPencil>
+        </ViewOneNaver>
+      )}
+    />
   );
 }

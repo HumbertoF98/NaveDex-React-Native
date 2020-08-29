@@ -12,6 +12,7 @@ import {
   EditButton,
   ButtonBorder,
 } from "./styles";
+import { useRoute } from "@react-navigation/native";
 import logo from "../../../assets/JulianoReis.png";
 import Trash from "../../../assets/Trash.png";
 import Pencil from "../../../assets/PencilWhite.png";
@@ -20,6 +21,11 @@ import Header from "../../components/Header";
 import GoBack from "../../../assets/GoBack.png";
 
 export default function ViewNaver({ navigation }) {
+  const route = useRoute();
+
+  // get params
+  const naver = route.params.naver;
+
   return (
     <Container>
       <Header>
@@ -27,18 +33,18 @@ export default function ViewNaver({ navigation }) {
           <IconGoBack source={GoBack} />
         </TouchImage>
       </Header>
-      <ImageNaver source={logo} />
-      <TextNameNaver>Juliano Reis</TextNameNaver>
-      <TextJobNaver>Front-end Developer</TextJobNaver>
+      <ImageNaver resizeMode="cover" source={{ uri: naver.url }} />
+      <TextNameNaver>{naver.name}</TextNameNaver>
+      <TextJobNaver>{naver.job_role}</TextJobNaver>
 
       <TextNameNaver>Idade</TextNameNaver>
-      <TextJobNaver>19 anos</TextJobNaver>
+      <TextJobNaver>{naver.birthdate}</TextJobNaver>
 
       <TextNameNaver>Tempo de empresa</TextNameNaver>
-      <TextJobNaver>14 meses</TextJobNaver>
+      <TextJobNaver>{naver.admission_date}</TextJobNaver>
 
       <TextNameNaver>Projetos que participou</TextNameNaver>
-      <TextJobNaver>Todos</TextJobNaver>
+      <TextJobNaver>{naver.project}</TextJobNaver>
 
       <ViewButtons>
         <ButtonBorder>

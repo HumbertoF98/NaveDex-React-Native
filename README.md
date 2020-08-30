@@ -1,7 +1,7 @@
 # Desafio Nave.rs
 
 <h1 align="center">
-    <img alt="Nave.rs" src="assets/LogoNave.png" height="60px" />
+    <img alt="Nave.rs" src="assets/nave.png" height="60px" />
     <br/>
    <a href="https://reactnative.dev/docs/getting-started" target="_blank" rel="noopener">React-Native</a> 
 </h1>

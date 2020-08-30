@@ -33,4 +33,5 @@ export const FormInput = styled(Input)`
 
 export const SubmitButton = styled(Button)`
   margin-top: 30px;
+  margin-bottom: 10px;
 `;

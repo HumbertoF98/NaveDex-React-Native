@@ -1,12 +1,6 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import {
-  Container,
-  ContainerButton,
-  Text,
-  ContainerIcon,
-  Image,
-} from "./styles";
+import { Container, Text, ContainerIcon, Image } from "./styles";
 
 export default function Button({ children, loading, image, ...rest }) {
   return (

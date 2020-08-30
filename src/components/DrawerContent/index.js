@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import { DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
 
-// This component will render the DrawerNavigator
+// This component will render a custom view for drawer navigator
 export function DrawerContainer(props) {
   async function handleLogout() {
     await AsyncStorage.clear();

@@ -9,7 +9,7 @@ import { TouchableOpacity, Image } from "react-native";
 import { DrawerActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-// Stack Navigator
+// function that will export stack navigator
 export function StackNavigator({ navigation }) {
   const Stack = createStackNavigator();
   return (

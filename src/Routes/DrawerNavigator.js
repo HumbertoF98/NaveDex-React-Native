@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerContainer } from "../components/DrawerContent";
 
+// function that will export drawer navigator
 export function Drawer({ navigation }) {
   const Drawer = createDrawerNavigator();
   return (

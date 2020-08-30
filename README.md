@@ -40,8 +40,8 @@ Primeiro clone o repositório em seu computador, por meio do terminal utilizando
 ```sh
   # Instale as dependências da aplicação
   $ npm install # ou yarn (caso tenha instalado)
-  # Inicie a aplicação web
-  $ expo start
+  # Inicie a aplicação mobile
+  $ expo start # ou se preferir yarn start/npm start
 ```
 
 ## Observações

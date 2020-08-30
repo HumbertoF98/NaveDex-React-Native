@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   TouchImage,
@@ -19,12 +19,15 @@ import Pencil from "../../../assets/PencilWhite.png";
 //Header
 import Header from "../../components/Header";
 import GoBack from "../../../assets/GoBack.png";
+import ModalDeleteNaver from "../../components/ModalDeleteNaver";
 
 // library to manipulate dates
 import moment from "moment";
 
 export default function ViewNaver({ navigation }) {
   const route = useRoute();
+  const [data, setData] = useState("");
+  const [modalDelete, setModalDelete] = useState(false);
 
   // get params
   const naver = route.params.naver;
@@ -46,8 +49,19 @@ export default function ViewNaver({ navigation }) {
     navigation.navigate("AddNaver", { naver });
   }
 
+  // see modal to delete a naver
+  function seeModalDelete(id) {
+    setData(id);
+    setModalDelete(true);
+  }
+
   return (
     <Container>
+      {modalDelete ? (
+        <ModalDeleteNaver onClose={() => setModalDelete(false)}>
+          {data}
+        </ModalDeleteNaver>
+      ) : null}
       <Header>
         <TouchImage onPress={() => navigation.goBack()}>
           <IconGoBack source={GoBack} />
@@ -68,7 +82,7 @@ export default function ViewNaver({ navigation }) {
 
       <ViewButtons>
         <ButtonBorder>
-          <DeleteButton image={Trash}>
+          <DeleteButton onPress={() => seeModalDelete(naver.id)} image={Trash}>
             <TextDeleteButton>Excluir</TextDeleteButton>
           </DeleteButton>
         </ButtonBorder>

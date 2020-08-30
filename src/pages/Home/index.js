@@ -12,6 +12,7 @@ import {
   TextJobNaver,
   ViewTrashAndPencil,
   ImageTrashAndPencil,
+  ViewForModal,
 } from "./styles";
 // header
 import Header from "../../components/Header";
@@ -20,12 +21,13 @@ import { useIsFocused } from "@react-navigation/native";
 import api from "../../services/api";
 import Trash from "../../../assets/Trash.png";
 import Pencil from "../../../assets/Pencil.png";
-import ModalDelete from "../../components/ModalDeleteNaver";
+import ModalDeleteNaver from "../../components/ModalDeleteNaver";
 
 export default function Home({ navigation }) {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalDelete, setIsModalDelete] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+
   const [navers, setNavers] = useState([]);
+  const [data, setData] = useState("");
   const isFocused = useIsFocused();
 
   // function responsible to load the navers
@@ -57,51 +59,56 @@ export default function Home({ navigation }) {
     navigation.navigate("AddNaver", { naver });
   }
 
+  // see modal to delete a naver
+  function seeModalDelete(id) {
+    setData(id);
+    setModalDelete(true);
+  }
+
   return (
-    <ViewNavers
-      ListHeaderComponent={
-        <Container>
-          {isModalDelete ? (
-            <ModalDelete onClose={() => setIsModalDelete(false)} />
-          ) : null}
-          <Header />
-          <SubHeader>
-            <TextNaver>Navers</TextNaver>
-            <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
-              Adicionar naver
-            </AddNaverButton>
-          </SubHeader>
-        </Container>
-      }
-      data={navers}
-      keyExtractor={(nav) => String(nav.id)}
-      numColumns={3}
-      showsVerticalScrollIndicator={false}
-      renderItem={({ item: nav }) => (
-        <ViewOneNaver>
-          <TouchImage onPress={() => navigateToNaverInfo(nav)}>
-            <ImageNaver source={{ uri: nav.url }} />
-          </TouchImage>
-          <TextNameNaver>
-            {nav.name.length > 20
-              ? nav.name.substring(0, 20, -3) + "..."
-              : nav.name}
-          </TextNameNaver>
-          <TextJobNaver>
-            {nav.job_role.length > 20
-              ? nav.job_role.substring(0, 20, -3) + "..."
-              : nav.job_role}
-          </TextJobNaver>
-          <ViewTrashAndPencil>
-            <TouchImage>
-              <ImageTrashAndPencil source={Trash} />
+    <Container>
+      <ViewNavers
+        ListHeaderComponent={
+          <>
+            <Header />
+            <SubHeader>
+              <TextNaver>Navers</TextNaver>
+              <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
+                Adicionar naver
+              </AddNaverButton>
+            </SubHeader>
+          </>
+        }
+        data={navers}
+        keyExtractor={(nav) => String(nav.id)}
+        numColumns={3}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item: nav }) => (
+          <ViewOneNaver>
+            <TouchImage onPress={() => navigateToNaverInfo(nav)}>
+              <ImageNaver source={{ uri: nav.url }} />
             </TouchImage>
-            <TouchImage onPress={() => navigateToEditNaver(nav)}>
-              <ImageTrashAndPencil source={Pencil} />
-            </TouchImage>
-          </ViewTrashAndPencil>
-        </ViewOneNaver>
-      )}
-    />
+            <TextNameNaver>
+              {nav.name.length > 20
+                ? nav.name.substring(0, 20, -3) + "..."
+                : nav.name}
+            </TextNameNaver>
+            <TextJobNaver>
+              {nav.job_role.length > 20
+                ? nav.job_role.substring(0, 20, -3) + "..."
+                : nav.job_role}
+            </TextJobNaver>
+            <ViewTrashAndPencil>
+              <TouchImage onPress={() => seeModalDelete(nav.id)}>
+                <ImageTrashAndPencil source={Trash} />
+              </TouchImage>
+              <TouchImage onPress={() => navigateToEditNaver(nav)}>
+                <ImageTrashAndPencil source={Pencil} />
+              </TouchImage>
+            </ViewTrashAndPencil>
+          </ViewOneNaver>
+        )}
+      />
+    </Container>
   );
 }

@@ -2,11 +2,13 @@ import styled from "styled-components/native";
 import Button from "../../components/Button";
 
 export const Container = styled.View`
-  width: 100%;
   height: 100%;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
   position: absolute;
   margin-top: 35px;
-  z-index: 10;
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
@@ -19,6 +21,7 @@ export const Content = styled.View`
   height: 220px;
   margin: 10px;
   background: #fff;
+  position: relative;
 `;
 
 export const Text = styled.Text`

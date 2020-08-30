@@ -23,6 +23,7 @@ export const AddNaverButton = styled(Button)`
 
 export const ViewNavers = styled.FlatList`
   margin-bottom: 20px;
+  z-index: -1000;
 `;
 
 export const ViewOneNaver = styled.View`
@@ -60,3 +61,5 @@ export const ViewTrashAndPencil = styled.View`
 export const ImageTrashAndPencil = styled.Image`
   margin-left: 20px;
 `;
+
+export const ViewForModal = styled.View``;

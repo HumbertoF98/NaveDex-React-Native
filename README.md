@@ -14,6 +14,7 @@ de encontrar possíveis colaboradores da empresa.
 ## Tecnologias Utilizadas
 
 - <a href="https://reactnative.dev/" target="_blank" rel="noopener">React-Native</a>
+- <a href="https://docs.expo.io/get-started/installation/" target="_blank" rel="noopener">Expo</a>
 
 ### Visualização/Utilização
 

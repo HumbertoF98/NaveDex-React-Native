@@ -31,9 +31,9 @@ Primeiro clone o repositório em seu computador, por meio do terminal utilizando
 
 ```sh
   # Clone o repositório
-  $ git clone https://github.com/HumbertoF98/Nave.rs.git
+  $ git clone https://github.com/HumbertoF98/NaveDex-React-Native.git
   # Entre na pasta raiz da aplicação
-  $ cd nave.rs
+  $ cd naveDex
 ```
 
 ```sh

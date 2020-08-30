@@ -12,12 +12,10 @@ import {
   TextJobNaver,
   ViewTrashAndPencil,
   ImageTrashAndPencil,
-  ViewForModal,
 } from "./styles";
 // header
 import Header from "../../components/Header";
 import { useIsFocused } from "@react-navigation/native";
-import { View } from "react-native";
 //api
 import api from "../../services/api";
 import Trash from "../../../assets/Trash.png";
@@ -45,10 +43,10 @@ export default function Home({ navigation }) {
 
   // runs whenever the page is focused
   useEffect(() => {
-    if (isFocused) {
+    if (isFocused || modalDelete) {
       loadNavers();
     }
-  }, [isFocused]);
+  }, [isFocused, modalDelete]);
 
   // this function navigates to the next route by sending a parameter
   function navigateToNaverInfo(naver) {
@@ -68,26 +66,22 @@ export default function Home({ navigation }) {
 
   return (
     <Container>
+      <Header />
+      <SubHeader>
+        <TextNaver>Navers</TextNaver>
+        <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
+          Adicionar naver
+        </AddNaverButton>
+      </SubHeader>
+      {modalDelete ? (
+        <ModalDeleteNaver onClose={() => setModalDelete(false)}>
+          {data}
+        </ModalDeleteNaver>
+      ) : null}
       <ViewNavers
-        ListHeaderComponent={
-          <>
-            <Header />
-            <SubHeader>
-              <TextNaver>Navers</TextNaver>
-              <AddNaverButton onPress={() => navigation.navigate("AddNaver")}>
-                Adicionar naver
-              </AddNaverButton>
-            </SubHeader>
-            {modalDelete ? (
-              <ModalDeleteNaver onClose={() => setModalDelete(false)}>
-                {data}
-              </ModalDeleteNaver>
-            ) : null}
-          </>
-        }
         data={navers}
         keyExtractor={(nav) => String(nav.id)}
-        numColumns={3}
+        numColumns={2}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: nav }) => (
           <ViewOneNaver>

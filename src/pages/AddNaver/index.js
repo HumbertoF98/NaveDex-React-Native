@@ -18,9 +18,11 @@ import api from "../../services/api";
 
 export default function AddNaver({ navigation }) {
   const route = useRoute();
-
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  /*
+   * if we have route params, we can use the same view to update the user
+   */
   const AddEditNaver = route.params ? "Editar Naver" : "Adicionar Naver";
   const [name, setName] = useState(route.params ? route.params.naver.name : "");
   const [age, setAge] = useState(

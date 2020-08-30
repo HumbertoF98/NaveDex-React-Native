@@ -36,7 +36,6 @@ export const TextInfo = styled.Text`
 
 export const TouchImage = styled.TouchableOpacity`
   align-self: flex-end;
-  margin-right: 10px;
   margin-top: 20px;
   width: 30px;
   height: 30px;

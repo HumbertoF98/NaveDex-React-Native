@@ -1,7 +1,9 @@
 import styled from "styled-components/native";
 import Button from "../../components/Button";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  z-index: -1;
+`;
 
 export const SubHeader = styled.View`
   margin: 20px;
@@ -23,7 +25,6 @@ export const AddNaverButton = styled(Button)`
 
 export const ViewNavers = styled.FlatList`
   margin-bottom: 20px;
-  z-index: -1000;
 `;
 
 export const ViewOneNaver = styled.View`

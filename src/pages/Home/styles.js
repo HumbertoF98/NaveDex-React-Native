@@ -27,6 +27,7 @@ export const AddNaverButton = styled(Button)`
 
 export const ViewNavers = styled.FlatList`
   margin-bottom: 20px;
+  padding-right: 20px;
 `;
 
 export const ViewOneNaver = styled.View`

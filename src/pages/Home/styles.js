@@ -18,6 +18,7 @@ export const TextNaver = styled.Text`
   font-size: 22px;
   line-height: 32px;
   color: #212121;
+  font-family: Montserrat_600SemiBold;
 `;
 
 export const AddNaverButton = styled(Button)`
@@ -45,13 +46,14 @@ export const TextNameNaver = styled.Text`
   font-size: 14px;
   line-height: 20px;
   margin-top: 10px;
-  font-weight: bold;
+  font-family: Montserrat_600SemiBold;
 `;
 
 export const TextJobNaver = styled.Text`
   font-size: 14px;
   margin-top: 10px;
   line-height: 16px;
+  font-family: Montserrat_400Regular;
 `;
 
 export const ViewTrashAndPencil = styled.View`

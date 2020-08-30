@@ -17,10 +17,10 @@ export const ImageNaver = styled.Image`
 
 export const TextNameNaver = styled.Text`
   margin: 20px 20px 5px 20px;
-  font-weight: bold;
   font-size: 22px;
   line-height: 32px;
   color: #212121;
+  font-family: Montserrat_600SemiBold;
 `;
 
 export const TextJobNaver = styled.Text`
@@ -28,6 +28,7 @@ export const TextJobNaver = styled.Text`
   font-size: 16px;
   line-height: 24px;
   color: #212121;
+  font-family: Montserrat_400Regular;
 `;
 
 export const ViewButtons = styled.View`

@@ -13,6 +13,7 @@ export const Text = styled.Text`
   color: #fff;
   font-size: 14px;
   line-height: 24px;
+  font-family: Montserrat_600SemiBold;
 `;
 
 export const Image = styled.Image`

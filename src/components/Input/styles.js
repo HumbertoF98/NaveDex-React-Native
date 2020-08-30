@@ -16,6 +16,7 @@ export const TInput = styled.TextInput.attrs({
   width: 100%;
   padding-left: 10px;
   border: 1px solid #424242;
+  font-family: Montserrat_400Regular;
 `;
 
 export const TextLabel = styled.Text`
@@ -24,5 +25,5 @@ export const TextLabel = styled.Text`
   text-align: left;
   align-self: flex-start;
   color: #212121;
-  font-weight: bold;
+  font-family: Montserrat_600SemiBold;
 `;

@@ -16,7 +16,11 @@ export function Drawer({ navigation }) {
         activeTintColor: "#212121",
         inactiveBackgroundColor: "#212121",
         activeBackgroundColor: "#FFF",
-        labelStyle: { fontSize: 22, lineHeight: 32, fontWeight: "bold" },
+        labelStyle: {
+          fontSize: 22,
+          lineHeight: 32,
+          fontFamily: "Montserrat_600SemiBold",
+        },
       }}
       drawerContent={(props) => <DrawerContainer {...props} />}
     >

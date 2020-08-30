@@ -15,7 +15,7 @@ export const IconGoBack = styled.Image``;
 export const TextAddNaver = styled.Text`
   text-align: center;
   margin-top: 20px;
-  font-weight: bold;
+  font-family: Montserrat_600SemiBold;
   font-size: 22px;
   color: #212121;
   line-height: 32px;

@@ -22,16 +22,17 @@ export const Content = styled.View`
 
 export const Text = styled.Text`
   color: #212121;
-  font-weight: bold;
+  font-family: Montserrat_600SemiBold;
   font-size: 22px;
   line-height: 32px;
-  margin: -5px 20px 0 20px;
+  margin: -25px 20px 0 25px;
 `;
 
 export const TextInfo = styled.Text`
   font-size: 16px;
   line-height: 24px;
-  margin: 10px 20px 20px 20px;
+  margin: 10px 20px 20px 25px;
+  font-family: Montserrat_400Regular;
 `;
 
 export const TouchImage = styled.TouchableOpacity`

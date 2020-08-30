@@ -4,12 +4,6 @@ import { Container, LogoImage, Form } from "./styles";
 import { Alert } from "react-native";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { AppLoading } from "expo";
-import {
-  useFonts,
-  Montserrat_400Regular,
-  Montserrat_600SemiBold,
-} from "@expo-google-fonts/montserrat";
 // storage data of cellphone
 import AsyncStorage from "@react-native-community/async-storage";
 //api
@@ -20,14 +14,6 @@ export default function SignIn({ navigation }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  let [fontsLoaded] = useFonts({
-    Montserrat_400Regular,
-    Montserrat_600SemiBold,
-  });
-
-  // await to load font
-  if (!fontsLoaded) {
-    return <AppLoading />;
   // refference to password
   const passwordRef = useRef();
 

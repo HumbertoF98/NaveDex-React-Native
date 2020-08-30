@@ -17,6 +17,7 @@ import {
 // header
 import Header from "../../components/Header";
 import { useIsFocused } from "@react-navigation/native";
+import { View } from "react-native";
 //api
 import api from "../../services/api";
 import Trash from "../../../assets/Trash.png";
@@ -77,6 +78,11 @@ export default function Home({ navigation }) {
                 Adicionar naver
               </AddNaverButton>
             </SubHeader>
+            {modalDelete ? (
+              <ModalDeleteNaver onClose={() => setModalDelete(false)}>
+                {data}
+              </ModalDeleteNaver>
+            ) : null}
           </>
         }
         data={navers}
@@ -84,29 +90,30 @@ export default function Home({ navigation }) {
         numColumns={3}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: nav }) => (
-          <ViewOneNaver>
-            <TouchImage onPress={() => navigateToNaverInfo(nav)}>
-              <ImageNaver source={{ uri: nav.url }} />
-            </TouchImage>
-            <TextNameNaver>
-              {nav.name.length > 20
-                ? nav.name.substring(0, 20, -3) + "..."
-                : nav.name}
-            </TextNameNaver>
-            <TextJobNaver>
-              {nav.job_role.length > 20
-                ? nav.job_role.substring(0, 20, -3) + "..."
-                : nav.job_role}
-            </TextJobNaver>
-            <ViewTrashAndPencil>
-              <TouchImage onPress={() => seeModalDelete(nav.id)}>
-                <ImageTrashAndPencil source={Trash} />
+            <ViewOneNaver>
+              <TouchImage onPress={() => navigateToNaverInfo(nav)}>
+                <ImageNaver source={{ uri: nav.url }} />
               </TouchImage>
-              <TouchImage onPress={() => navigateToEditNaver(nav)}>
-                <ImageTrashAndPencil source={Pencil} />
-              </TouchImage>
-            </ViewTrashAndPencil>
-          </ViewOneNaver>
+              <TextNameNaver>
+                {nav.name.length > 20
+                  ? nav.name.substring(0, 20, -3) + "..."
+                  : nav.name}
+              </TextNameNaver>
+              <TextJobNaver>
+                {nav.job_role.length > 20
+                  ? nav.job_role.substring(0, 20, -3) + "..."
+                  : nav.job_role}
+              </TextJobNaver>
+              <ViewTrashAndPencil>
+                <TouchImage onPress={() => seeModalDelete(nav.id)}>
+                  <ImageTrashAndPencil source={Trash} />
+                </TouchImage>
+                <TouchImage onPress={() => navigateToEditNaver(nav)}>
+                  <ImageTrashAndPencil source={Pencil} />
+                </TouchImage>
+              </ViewTrashAndPencil>
+            </ViewOneNaver>
+          </ViewForModal>
         )}
       />
     </Container>

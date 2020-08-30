@@ -44,6 +44,11 @@ Primeiro clone o repositório em seu computador, por meio do terminal utilizando
   $ expo start
 ```
 
+## Observações
+
+O projeto foi desenvolvido em sua totalidade em um dispositivo Android,
+ao qual funciona corretamente. Alguma inconsistência em relação ao iOS pode ocorrer.
+
 ## 📚 Dificuldades
 
 Durante a execução da atividade proposta, algumas dificuldades e/ou empecilhos surgiram:

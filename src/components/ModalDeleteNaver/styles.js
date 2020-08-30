@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 export const Container = styled.View`
   width: 100%;
-  height: 800px;
+  height: 100%;
   z-index: 1000;
   position: absolute;
   background: rgba(0, 0, 0, 0.5);

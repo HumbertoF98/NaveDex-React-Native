@@ -33,14 +33,14 @@ Primeiro clone o repositório em seu computador, por meio do terminal utilizando
   # Clone o repositório
   $ git clone https://github.com/HumbertoF98/NaveDex-React-Native.git
   # Entre na pasta raiz da aplicação
-  $ cd naveDex
+  $ cd NaveDex-React-Native
 ```
 
 ```sh
   # Instale as dependências da aplicação
   $ npm install # ou yarn (caso tenha instalado)
   # Inicie a aplicação web
-  $ npm start # ou yarn start (caso tenha instalado)
+  $ expo start
 ```
 
 ## 📚 Dificuldades

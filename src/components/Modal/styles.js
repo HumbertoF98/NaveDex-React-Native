@@ -15,7 +15,7 @@ export const Container = styled.View`
 export const Content = styled.View`
   align-self: center;
   width: 90%;
-  height: 120px;
+  height: 140px;
   margin: 10px;
   background: #fff;
 `;
@@ -25,7 +25,7 @@ export const Text = styled.Text`
   font-weight: bold;
   font-size: 22px;
   line-height: 32px;
-  margin: -20px 20px 0 20px;
+  margin: -5px 20px 0 20px;
 `;
 
 export const TextInfo = styled.Text`

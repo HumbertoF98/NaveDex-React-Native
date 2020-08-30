@@ -90,30 +90,29 @@ export default function Home({ navigation }) {
         numColumns={3}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: nav }) => (
-            <ViewOneNaver>
-              <TouchImage onPress={() => navigateToNaverInfo(nav)}>
-                <ImageNaver source={{ uri: nav.url }} />
+          <ViewOneNaver>
+            <TouchImage onPress={() => navigateToNaverInfo(nav)}>
+              <ImageNaver source={{ uri: nav.url }} />
+            </TouchImage>
+            <TextNameNaver>
+              {nav.name.length > 20
+                ? nav.name.substring(0, 20, -3) + "..."
+                : nav.name}
+            </TextNameNaver>
+            <TextJobNaver>
+              {nav.job_role.length > 20
+                ? nav.job_role.substring(0, 20, -3) + "..."
+                : nav.job_role}
+            </TextJobNaver>
+            <ViewTrashAndPencil>
+              <TouchImage onPress={() => seeModalDelete(nav.id)}>
+                <ImageTrashAndPencil source={Trash} />
               </TouchImage>
-              <TextNameNaver>
-                {nav.name.length > 20
-                  ? nav.name.substring(0, 20, -3) + "..."
-                  : nav.name}
-              </TextNameNaver>
-              <TextJobNaver>
-                {nav.job_role.length > 20
-                  ? nav.job_role.substring(0, 20, -3) + "..."
-                  : nav.job_role}
-              </TextJobNaver>
-              <ViewTrashAndPencil>
-                <TouchImage onPress={() => seeModalDelete(nav.id)}>
-                  <ImageTrashAndPencil source={Trash} />
-                </TouchImage>
-                <TouchImage onPress={() => navigateToEditNaver(nav)}>
-                  <ImageTrashAndPencil source={Pencil} />
-                </TouchImage>
-              </ViewTrashAndPencil>
-            </ViewOneNaver>
-          </ViewForModal>
+              <TouchImage onPress={() => navigateToEditNaver(nav)}>
+                <ImageTrashAndPencil source={Pencil} />
+              </TouchImage>
+            </ViewTrashAndPencil>
+          </ViewOneNaver>
         )}
       />
     </Container>
